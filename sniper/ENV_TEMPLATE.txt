@@ -1,0 +1,80 @@
+================================================================
+ prpo_ai Meme Sniper — REQUIRED ENV KEYS (paste to .env)
+================================================================
+
+PATH: /root/.hermes/profiles/prpo_ai/.env  (chmod 600, owner=root)
+
+ADD these lines (replace placeholders with real values):
+
+  # REQUIRED for sniper to go live
+  PRIVATE_KEY_SOL_TREASURY=<paste base58 string OR JSON array, e.g. [12,34,...]>
+  SOL_RPC_URL=<paste RPC URL, recommended: Helius free https://mainnet.helius-rpc.com/?api-key=YOUR_KEY>
+  TELEGRAM_CHAT_ID=1963809645
+
+  # OPTIONAL (improve performance)
+  BIRDEYE_API_KEY=<your key from birdeye.so for faster price feed>
+  WALLET_ADDRESS_SOL=7P7w3M9yQs5PCH2WbfmMxVWnkrobVsq1ARZBFfJ5W5zN
+  HELIUS_API_KEY=<from helius.dev>
+
+
+================================================================
+ SECURITY CHECKLIST — WAJIB
+================================================================
+
+  [ ] Key stored ONLY in /root/.hermes/profiles/prpo_ai/.env (chmod 600)
+  [ ] NEVER echo key in logs, Telegram, GitHub, chat
+  [ ] NEVER commit .env to any git repo
+  [ ] Keypair is from a FRESH WALLET (not the previously-exposed
+      LitCountPool key per advisory 2026-06-18)
+  [ ] Wallet has 0.069 SOL ONLY for trading — main treasury stays untouched
+  [ ] RPC URL uses HTTPS, not HTTP
+  [ ] Bot will be the ONLY signer on this wallet during operation
+
+
+================================================================
+ RPC OPTIONS (pick one)
+================================================================
+
+  Free (slow, ~5 req/sec, lots of misses):
+    https://api.mainnet-beta.solana.com
+
+  Free tier better (100k req/day):
+    https://mainnet.helius-rpc.com/?api-key=YOUR_KEY   <- recommended
+    https://solana-mainnet.g.alchemy.com/v2/YOUR_KEY
+
+  Paid (fastest, needed for true sniping):
+    QuickNode, Triton, Chainstack -- $30-100/month
+
+
+================================================================
+ AFTER YOU ADD KEYS — VERIFY & START
+================================================================
+
+  # 1. Verify key loads
+  cd /root/prpo_ai/sniper
+  source /root/.venv-sniper/bin/activate
+  python wallet.py
+
+  # Expected: "OK wallet loaded. Address: 7P7w...W5zN"
+  # If address differs from memory: STOP, do not start bot, check key
+
+  # 2. Start bot in background
+  /root/prpo_ai/sniper/run.sh
+
+  # 3. Tail logs
+  tail -f /root/prpo_ai/sniper/logs/bot.log
+
+  # 4. Kill switch
+  pkill -f "sniper/bot.py"
+
+
+================================================================
+ EXPECTED FIRST-MINUTE TELEGRAM MESSAGES
+================================================================
+
+  1. "prpo_ai SNIPER — START" with balance, strategy params
+  2. Every 2 min: "[signal] N qualified (boosted=X + search=Y pairs)"
+  3. When signal triggers BUY:
+     "BUY <symbol> | size: 0.0123 SOL | entry: $0.00001234 | score: 5.74"
+  4. Every hour: "HOURLY balance: 0.0661 SOL | open: 0 | daily: 0 trades"
+================================================================

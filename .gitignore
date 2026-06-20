@@ -1,4 +1,34 @@
-pycache/
+# Python
+__pycache__/
 *.pyc
+*.pyo
+.venv/
 .venv-sniper/
+venv/
+
+# Secrets
+.env
+.env.bak
+.env.local
+
+# Logs
 logs/
+*.log
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# SnapDeploy artifacts (not needed)
+sniper_root/
+Dockerfile.sniper
+requirements-sniper.txt
