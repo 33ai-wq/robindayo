@@ -54,12 +54,15 @@ export default {
       return new Response(null, { status: 204, headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, OPTIONS', 'Access-Control-Allow-Headers': 'x-payment, Content-Type' } });
     }
 
+    // Prices in microlamports: $1 USDC = 1_000_000 microlamports
+    // B0xM4 is Meridian intelligence — 2 months of real DLMM screening cycles
+    // BYPASS IS OFF — buyers pay. This is high-value, not a commodity API.
     const priceMap = {
-      '/v1/dlmm-pools':     { amount: 100_000, label: '0.0001 USDC' },
-      '/v1/smart-wallets':   { amount: 500_000, label: '0.0005 USDC' },
-      '/v1/token-safety':    { amount: 200_000, label: '0.0002 USDC' },
-      '/v1/yield-hunter':    { amount: 500_000, label: '0.0005 USDC' },
-      '/v1/pool-screener':   { amount: 250_000, label: '0.00025 USDC' },
+      '/v1/dlmm-pools':     { amount: 2_000_000, label: '2.00 USDC' },
+      '/v1/smart-wallets':   { amount: 5_000_000, label: '5.00 USDC' },   // KEY deploy signal — strongest conviction
+      '/v1/token-safety':    { amount: 3_000_000, label: '3.00 USDC' },   // Would have caught FLKR rug flags
+      '/v1/yield-hunter':    { amount: 2_000_000, label: '2.00 USDC' },
+      '/v1/pool-screener':   { amount: 3_000_000, label: '3.00 USDC' },   // Full Meridian threshold engine
     };
 
     const ep = priceMap[path];
