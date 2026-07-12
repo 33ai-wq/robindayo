@@ -32,3 +32,13 @@ Thumbs.db
 sniper_root/
 Dockerfile.sniper
 requirements-sniper.txt
+b0xm4-worker/.wrangler/
+
+# Node — wrangler installs locally
+**/node_modules/
+.npm/
+.yarn/
+
+# Cloudflare worker ad-hoc artifacts
+*.toml.local
+.dev.vars
