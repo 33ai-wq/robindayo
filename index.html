@@ -1,40 +1,41 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RobinDayo — Ruang Tamu Digital di Robinhood Chain</title>
-  <meta name="description" content="RobinDayo (tamu, visitor) — katalog endpoint payant x402 di jaringan Robinhood Chain. Sambang dengan hormat, pulang dengan data.">
-  <meta property="og:title" content="RobinDayo — Ruang Tamu Digital">
-  <meta property="og:description" content="Katalog endpoint x402 USDC pada Robinhood Chain. Setiap tamu dihormati; setiap klik bernilai.">
+  <title>RobinDayo — Visitors Welcome (x402 endpoint catalog)</title>
+  <meta name="description" content="RobinDayo (Javanese: visitor) — an open catalog of paid x402 endpoints on Robinhood Chain. Click, pay a few cents, get clean data. Every request honours the visitor.">
+  <meta property="og:title" content="RobinDayo — Visitors Welcome">
+  <meta property="og:description" content="An open catalog of paid x402 endpoints on Robinhood Chain. Click, pay a few cents, get clean data.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="logo.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2300b07c'/%3E%3Ctext x='50' y='62' text-anchor='middle' font-family='Georgia,serif' font-size='42' fill='white'%3ER%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 
   <header class="site-header">
-    <div class="brand">
-      <span class="brand-mark">RobinDayo</span>
-      <span class="brand-tld">.onchain</span>
+    <div class="brand-row">
+      <img src="logo.svg" alt="RobinDayo logo" class="brand-logo">
     </div>
-    <p class="tagline">Ruang tamu digital di jaringan Robinhood Chain — tempat setiap tamu (dayo) datang untuk dilihat, dilayani, dan pulang dengan sesuatu yang berarti.</p>
+    <p class="tagline">A digital <strong>living room</strong> on Robinhood Chain — built for the visitors who drop by, ask a question, and leave with something useful in hand.</p>
+    <p class="subtitle">RobinDayo comes from the Javanese word <em>dayo</em> — a guest, a visitor — someone you welcome properly. Every endpoint on this page is treated as a guest: a small, fair fee, no friction, no tracking.</p>
     <span class="chain-pill"><span class="dot"></span>Robinhood Chain · mainnet · chain id 4663</span>
   </header>
 
-  <section id="selamat-datang">
+  <section id="welcome">
     <div class="welcome">
-      <p>Selamat datang. RobinDayo dibangun di atas satu prinsip sederhana yang aku pelajari dari tamu-tamu di kehidupan nyata: tamu yang datang wajib dihormati dan dihargai. Di sini, rasa hormat itu punya bentuk — sebuah transaksi on-chain yang ringan, transparan, dan langsung terasa nilainya.</p>
-      <p>Halaman ini adalah etalase endpoint-endpoint yang sudah berjalan di worker kami. Tidak ada widget, tidak ada pop-up, tidak ada Cloudflare front-end yang memaksakan UI kosong. Cukup tautan, klik, bayar seikhlasnya sesuai harga yang tertera, dan terima jawabannya. Biasanya kurang dari satu detik.</p>
-      <p>Kalau API ini berguna untukmu — balik lagi. Kalau tidak, semoga harimu menyenangkan.</p>
-      <p class="signoff">dengan hormat,<br>prpo_ai · operator</p>
+      <p>Welcome. This page was built on a single principle learned from real-life guests: a visitor is owed two things — respect, and value. On RobinDayo, both have a precise shape: a small on-chain settlement, transparent in price, returned instantly in the response body.</p>
+      <p>What you're looking at is a catalog of working endpoints, each hosted and billed on the x402 protocol (USDC on Base, settled automatically). There's no front-end cloud bill pushed onto you, no upsell modal, no SDK to install — just click, pay what the card shows, get your answer. Usually under a second.</p>
+      <p>If these endpoints are useful, come back. If not, may your day be kind.</p>
+      <p class="signoff">with respect,<br>prpo_ai · the operator</p>
     </div>
   </section>
 
   <section id="endpoints">
-    <div class="section-eyebrow">Katalog · per July 2026</div>
-    <h2 class="section-title">Endpoint untuk disewa</h2>
-    <p class="section-lede">Setiap endpoint membayar worker-nya secara otomatis lewat protokol x402 (USDC di Base, diselesaikan tangan kedua). Harga di bawah sudah final di endpoint — tidak ada biaya tersembunyi, tidak ada langganan, tidak ada waiting list.</p>
+    <div class="section-eyebrow">Catalogue · July 2026</div>
+    <h2 class="section-title">Endpoints available <em>for hire</em></h2>
+    <p class="section-lede">Each endpoint bills its worker automatically through the x402 protocol — USDC on Base, settled by the protocol's payer. Prices below are final at the endpoint. No subscriptions, no waitlist, no upsell.</p>
 
     <div class="endpoints">
 
@@ -42,14 +43,14 @@
         <span class="verb get">GET</span>
         <h3>meme-hunter</h3>
         <span class="path">/v1/meme-hunter</span>
-        <p class="desc">Cairan, volume 24 jam, dan skor boost untuk koin meme di Solana. Sumber: token yang sedang ribut di DexScreener.</p>
+        <p class="desc">Liquidity, 24h volume, and a heat score for the loudest Solana meme tokens. Sourced from DexScreener's active token stream.</p>
         <div class="meta">
-          <span class="price">$0.001<small>USDC · x402</small></span>
-          <span class="price">25 sats<small>L402 / Lightning</small></span>
+          <span class="price x402">$0.001<small>USDC · x402</small></span>
+          <span class="price l402">25 sats<small>L402 · Lightning</small></span>
         </div>
         <div class="copy-row">
-          <button class="btn primary" onclick="openEndpoint(this)">Coba</button>
-          <button class="btn copy-btn">Salin tautan</button>
+          <button class="btn primary" onclick="openEndpoint(this)">Try it</button>
+          <button class="btn copy-btn">Copy link</button>
         </div>
       </div>
 
@@ -57,14 +58,14 @@
         <span class="verb get">GET</span>
         <h3>defi-sentiment</h3>
         <span class="path">/v1/defi-sentiment</span>
-        <p class="desc">Skor suasana pasar makro DeFi hari ini — bullish, bearish, atau netral, plus alasannya.</p>
+        <p class="desc">A daily macro DeFi mood score — bullish, bearish or neutral — with a short rationale. Useful as a single input to a sizing model.</p>
         <div class="meta">
-          <span class="price">$0.005<small>USDC · x402</small></span>
-          <span class="price">25 sats<small>L402 / Lightning</small></span>
+          <span class="price x402">$0.005<small>USDC · x402</small></span>
+          <span class="price l402">25 sats<small>L402 · Lightning</small></span>
         </div>
         <div class="copy-row">
-          <button class="btn primary" onclick="openEndpoint(this)">Coba</button>
-          <button class="btn copy-btn">Salin tautan</button>
+          <button class="btn primary" onclick="openEndpoint(this)">Try it</button>
+          <button class="btn copy-btn">Copy link</button>
         </div>
       </div>
 
@@ -72,14 +73,14 @@
         <span class="verb post">POST</span>
         <h3>dinalibrium</h3>
         <span class="path">/v1/dinalibrium</span>
-        <p class="desc">Rasio keseimbangan ETH vs stablecoin. Body sederhana, keluarannya menentukan kapan ports Cosmos masuk air tenang.</p>
+        <p class="desc">ETH vs stablecoin equilibrium ratio. Send your sample, get back a regime state and the implied rotation signal.</p>
         <div class="meta">
-          <span class="price">$0.005<small>USDC · x402</small></span>
-          <span class="price">50 sats<small>L402 / Lightning</small></span>
+          <span class="price x402">$0.005<small>USDC · x402</small></span>
+          <span class="price l402">50 sats<small>L402 · Lightning</small></span>
         </div>
         <div class="copy-row">
-          <button class="btn primary" onclick="openEndpoint(this)">Coba</button>
-          <button class="btn copy-btn">Salin tautan</button>
+          <button class="btn primary" onclick="openEndpoint(this)">Try it</button>
+          <button class="btn copy-btn">Copy link</button>
         </div>
       </div>
 
@@ -87,47 +88,89 @@
         <span class="verb get">GET</span>
         <h3>wallet-profile</h3>
         <span class="path">/v1/wallet-profile?address=…</span>
-        <p class="desc">Jumlah transaksi, transaksi pertama/terakhir, dan ringkasan portofolio untuk alamat EVM. Teman audit on-chain.</p>
+        <p class="desc">Tx count, first/last active block, and a portfolio snapshot for any EVM address. The on-chain due-diligence desk's quiet friend.</p>
         <div class="meta">
-          <span class="price">$0.010<small>USDC · x402</small></span>
-          <span class="price">100 sats<small>L402 / Lightning</small></span>
+          <span class="price x402">$0.010<small>USDC · x402</small></span>
+          <span class="price l402">100 sats<small>L402 · Lightning</small></span>
         </div>
         <div class="copy-row">
-          <button class="btn primary" onclick="openEndpoint(this)">Coba</button>
-          <button class="btn copy-btn">Salin tautan</button>
+          <button class="btn primary" onclick="openEndpoint(this)">Try it</button>
+          <button class="btn copy-btn">Copy link</button>
         </div>
       </div>
 
     </div>
   </section>
 
-  <section id="filosofi">
-    <div class="section-eyebrow">Filosofi</div>
-    <h2 class="section-title">Kenapa halaman ini cuma HTML polos</h2>
+  <section id="how">
+    <div class="section-eyebrow">How a visit works</div>
+    <h2 class="section-title">Four steps from <em>arrival</em> to answer</h2>
+
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="num">01 · LOOK</div>
+        <h5>Pick an endpoint</h5>
+        <p>Read the card. Note the price and the network. Move on if it's not for you — no click, no charge.</p>
+      </div>
+      <div class="how-step">
+        <div class="num">02 · KNOCK</div>
+        <h5>Click "Try it"</h5>
+        <p>Your client sends a normal HTTP request. The worker answers with HTTP 402 and the exact settlement terms.</p>
+      </div>
+      <div class="how-step">
+        <div class="num">03 · PAY</div>
+        <h5>Settle one penny</h5>
+        <p>Your x402 client signs a USDC transfer to the address in the 402 envelope, retries with the receipt header.</p>
+      </div>
+      <div class="how-step">
+        <div class="num">04 · ANSWER</div>
+        <h5>Receive the data</h5>
+        <p>The worker returns the response. Receipt lives on-chain. You're a guest who paid the bill — clean, done.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="philosophy">
+    <div class="section-eyebrow">Philosophy</div>
+    <h2 class="section-title">Why this is just <em>plain HTML</em></h2>
     <div class="about-grid">
       <div class="about-block">
-        <h4>Tanpa front-end</h4>
-        <p>Tidak ada Cloudflare Pages, tidak ada React, tidak ada bundler. GitHub Pages sudah lebih dari cukup untuk etalase. Biaya operasional mendekati nol.</p>
+        <div class="marker">// 01</div>
+        <h4>No front-end server</h4>
+        <p>No Cloudflare Pages. No React. No bundler. GitHub Pages is enough for a catalog. Operating cost rounds to zero.</p>
       </div>
       <div class="about-block">
-        <h4>Tamu = transaksi</h4>
-        <p>Setiap request ke endpoint adalah micro-payment otomatis lewat protokol x402. Kalau kamu berhenti datang, kami berhenti dihitung. Tidak ada auto-billing, tidak ada trial tersembunyi.</p>
+        <div class="marker">// 02</div>
+        <h4>Guest = transaction</h4>
+        <p>Every request settles as a micro-payment over x402. Stop visiting, stop paying. No auto-billing, no trapped trial.</p>
       </div>
       <div class="about-block">
-        <h4>Harga jujur</h4>
-        <p>Harga USDC sama dengan harga di x402scan. Tidak ada markup RobinDayo. Kalau kamu menemukan markup, itu bug — dan akan dikembalikan.</p>
+        <div class="marker">// 03</div>
+        <h4>Honourable pricing</h4>
+        <p>USDC prices match x402scan. There's no RobinDayo markup. If you ever find one, that's a bug — and it gets refunded.</p>
       </div>
       <div class="about-block">
-        <h4>Sumber terbuka</h4>
-        <p>Seluruh logika worker tersedia publik. Repo ini adalah etalase; worker sumber ada di repositori terpisah. Silakan audit.</p>
+        <div class="marker">// 04</div>
+        <h4>Source-open</h4>
+        <p>The worker logic is public. This repo is the catalog; the worker sources live in adjacent repos. Audit them.</p>
+      </div>
+      <div class="about-block">
+        <div class="marker">// 05</div>
+        <h4>Two rails, one price</h4>
+        <p>Both x402 (USDC) and L402 (Lightning sats) point at the same response. Pay the way that suits your stack.</p>
+      </div>
+      <div class="about-block">
+        <div class="marker">// 06</div>
+        <h4>No tracking</h4>
+        <p>No analytics SDKs, no fingerprinting, no cookies. The HTTP request is the only thing the workers see.</p>
       </div>
     </div>
   </section>
 
   <section class="treasury" id="treasury">
-    <div class="section-eyebrow">Pembukuan</div>
-    <h2 class="section-title">Kas rumah (treasury)</h2>
-    <p class="section-lede">Setiap pembayaran yang masuk ke worker dicatat di kas Robinhood Chain di bawah. Saldo di bawah dibaca langsung dari RPC mainnet; kalau angkanya nol, ya memang nol.</p>
+    <div class="section-eyebrow">Ledger</div>
+    <h2 class="section-title">House <em>treasury</em></h2>
+    <p class="section-lede">Every payment that lands at the worker is tallied on the Robinhood Chain side below. The balance is read live from the RPC — if it reads zero, it is zero; if it can't reach RPC, the card says so instead of guessing.</p>
 
     <div class="treasury-card">
       <div class="treasury-row">
@@ -136,16 +179,16 @@
           <div class="address" id="treasury-addr">0x99Cc2cA01841ca704C834415b5909bE591f36d27</div>
         </div>
         <div style="text-align: right;">
-          <div class="label">Saldo · RHCHAIN</div>
-          <div class="balance" id="treasury-balance">memuat…</div>
+          <div class="label">Balance · RHO</div>
+          <div class="balance" id="treasury-balance">loading…</div>
         </div>
       </div>
-      <p class="treasury-note">Saldo diperbarui saat halaman dimuat, via JSON-RPC publik. Jika RPC sedang sibuk, kami jujur menampilkan "memuat…" — bukan angka palsu.</p>
+      <p class="treasury-note">Updated on page load, via the public JSON-RPC. If the network is busy, the card shows "unavailable" — never a fabricated number.</p>
     </div>
   </section>
 
   <footer class="site-footer">
-    <div>© 2026 RobinDayo · di-host di GitHub Pages · dijalankan oleh prpo_ai</div>
+    <div>© 2026 RobinDayo · hosted on GitHub Pages · operated by prpo_ai</div>
     <div>
       <a href="https://github.com/33ai-wq/robindayo" target="_blank" rel="noopener">repo</a> ·
       <a href="https://github.com/33ai-wq" target="_blank" rel="noopener">operator</a> ·
@@ -154,24 +197,22 @@
   </footer>
 
   <script>
-    // Copy link buttons
     document.querySelectorAll('.copy-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
         const card = btn.closest('.endpoint');
         const url = card.dataset.url;
-        const method = card.dataset.method;
-        const text = method + ' ' + url;
         try {
           await navigator.clipboard.writeText(url);
-          btn.textContent = 'Tersalin ✓';
+          const prev = btn.textContent;
+          btn.textContent = 'Copied ✓';
           btn.classList.add('copied');
           setTimeout(() => {
-            btn.textContent = 'Salin tautan';
+            btn.textContent = prev;
             btn.classList.remove('copied');
           }, 1800);
         } catch (e) {
-          btn.textContent = 'Gagal';
-          setTimeout(() => { btn.textContent = 'Salin tautan'; }, 1800);
+          btn.textContent = 'Failed';
+          setTimeout(() => { btn.textContent = 'Copy link'; }, 1800);
         }
       });
     });
@@ -182,13 +223,11 @@
       window.open(url, '_blank', 'noopener');
     }
 
-    // Treasury balance — honest load via public JSON-RPC. Falls back gracefully.
     (async () => {
       const addr = '0x99Cc2cA01841ca704C834415b5909bE591f36d27'.toLowerCase();
       const rpc = 'https://rpc.mainnet.chain.robinhood.com';
       const el = document.getElementById('treasury-balance');
       try {
-        const data = '0x' + addr.substring(2).padStart(64, '0');
         const res = await fetch(rpc, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -197,21 +236,20 @@
         if (!res.ok) throw new Error('rpc http ' + res.status);
         const json = await res.json();
         if (json.error || !json.result) throw new Error(json.error?.message || 'no result');
-        const weiHex = json.result;
-        const wei = parseInt(weiHex, 16);
+        const wei = parseInt(json.result, 16);
         if (!Number.isFinite(wei)) throw new Error('parse fail');
-        const eth = wei / 1e18;
-        if (eth === 0) {
+        const rho = wei / 1e18;
+        if (rho === 0) {
           el.textContent = '0 RHO';
-        } else if (eth < 0.0001) {
+        } else if (rho < 0.0001) {
           el.textContent = wei.toLocaleString('en-US') + ' wei';
         } else {
-          el.textContent = eth.toFixed(6) + ' RHO';
+          el.textContent = rho.toFixed(6) + ' RHO';
         }
       } catch (e) {
-        el.textContent = 'tidak tersedia';
+        el.textContent = 'unavailable';
         el.style.fontSize = '14px';
-        el.style.color = '#999';
+        el.style.color = '#a05a2a';
       }
     })();
   </script>
