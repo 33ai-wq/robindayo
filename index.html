@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RobinDayo — Ruang Tamu Digital di Robinhood Chain</title>
+  <meta name="description" content="RobinDayo (tamu, visitor) — katalog endpoint payant x402 di jaringan Robinhood Chain. Sambang dengan hormat, pulang dengan data.">
+  <meta property="og:title" content="RobinDayo — Ruang Tamu Digital">
+  <meta property="og:description" content="Katalog endpoint x402 USDC pada Robinhood Chain. Setiap tamu dihormati; setiap klik bernilai.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2300b07c'/%3E%3Ctext x='50' y='62' text-anchor='middle' font-family='Georgia,serif' font-size='42' fill='white'%3ER%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">RobinDayo</span>
+      <span class="brand-tld">.onchain</span>
+    </div>
+    <p class="tagline">Ruang tamu digital di jaringan Robinhood Chain — tempat setiap tamu (dayo) datang untuk dilihat, dilayani, dan pulang dengan sesuatu yang berarti.</p>
+    <span class="chain-pill"><span class="dot"></span>Robinhood Chain · mainnet · chain id 4663</span>
+  </header>
+
+  <section id="selamat-datang">
+    <div class="welcome">
+      <p>Selamat datang. RobinDayo dibangun di atas satu prinsip sederhana yang aku pelajari dari tamu-tamu di kehidupan nyata: tamu yang datang wajib dihormati dan dihargai. Di sini, rasa hormat itu punya bentuk — sebuah transaksi on-chain yang ringan, transparan, dan langsung terasa nilainya.</p>
+      <p>Halaman ini adalah etalase endpoint-endpoint yang sudah berjalan di worker kami. Tidak ada widget, tidak ada pop-up, tidak ada Cloudflare front-end yang memaksakan UI kosong. Cukup tautan, klik, bayar seikhlasnya sesuai harga yang tertera, dan terima jawabannya. Biasanya kurang dari satu detik.</p>
+      <p>Kalau API ini berguna untukmu — balik lagi. Kalau tidak, semoga harimu menyenangkan.</p>
+      <p class="signoff">dengan hormat,<br>prpo_ai · operator</p>
+    </div>
+  </section>
+
+  <section id="endpoints">
+    <div class="section-eyebrow">Katalog · per July 2026</div>
+    <h2 class="section-title">Endpoint untuk disewa</h2>
+    <p class="section-lede">Setiap endpoint membayar worker-nya secara otomatis lewat protokol x402 (USDC di Base, diselesaikan tangan kedua). Harga di bawah sudah final di endpoint — tidak ada biaya tersembunyi, tidak ada langganan, tidak ada waiting list.</p>
+
+    <div class="endpoints">
+
+      <div class="endpoint" data-endpoint="meme-hunter" data-url="https://x402-cf-worker.mulberry-boar.workers.dev/v1/meme-hunter" data-method="GET">
+        <span class="verb get">GET</span>
+        <h3>meme-hunter</h3>
+        <span class="path">/v1/meme-hunter</span>
+        <p class="desc">Cairan, volume 24 jam, dan skor boost untuk koin meme di Solana. Sumber: token yang sedang ribut di DexScreener.</p>
+        <div class="meta">
+          <span class="price">$0.001<small>USDC · x402</small></span>
+          <span class="price">25 sats<small>L402 / Lightning</small></span>
+        </div>
+        <div class="copy-row">
+          <button class="btn primary" onclick="openEndpoint(this)">Coba</button>
+          <button class="btn copy-btn">Salin tautan</button>
+        </div>
+      </div>
+
+      <div class="endpoint" data-endpoint="defi-sentiment" data-url="https://x402-cf-worker.mulberry-boar.workers.dev/v1/defi-sentiment" data-method="GET">
+        <span class="verb get">GET</span>
+        <h3>defi-sentiment</h3>
+        <span class="path">/v1/defi-sentiment</span>
+        <p class="desc">Skor suasana pasar makro DeFi hari ini — bullish, bearish, atau netral, plus alasannya.</p>
+        <div class="meta">
+          <span class="price">$0.005<small>USDC · x402</small></span>
+          <span class="price">25 sats<small>L402 / Lightning</small></span>
+        </div>
+        <div class="copy-row">
+          <button class="btn primary" onclick="openEndpoint(this)">Coba</button>
+          <button class="btn copy-btn">Salin tautan</button>
+        </div>
+      </div>
+
+      <div class="endpoint" data-endpoint="dinalibrium" data-url="https://x402-cf-worker.mulberry-boar.workers.dev/v1/dinalibrium" data-method="POST">
+        <span class="verb post">POST</span>
+        <h3>dinalibrium</h3>
+        <span class="path">/v1/dinalibrium</span>
+        <p class="desc">Rasio keseimbangan ETH vs stablecoin. Body sederhana, keluarannya menentukan kapan ports Cosmos masuk air tenang.</p>
+        <div class="meta">
+          <span class="price">$0.005<small>USDC · x402</small></span>
+          <span class="price">50 sats<small>L402 / Lightning</small></span>
+        </div>
+        <div class="copy-row">
+          <button class="btn primary" onclick="openEndpoint(this)">Coba</button>
+          <button class="btn copy-btn">Salin tautan</button>
+        </div>
+      </div>
+
+      <div class="endpoint" data-endpoint="wallet-profile" data-url="https://x402-cf-worker.mulberry-boar.workers.dev/v1/wallet-profile" data-method="GET">
+        <span class="verb get">GET</span>
+        <h3>wallet-profile</h3>
+        <span class="path">/v1/wallet-profile?address=…</span>
+        <p class="desc">Jumlah transaksi, transaksi pertama/terakhir, dan ringkasan portofolio untuk alamat EVM. Teman audit on-chain.</p>
+        <div class="meta">
+          <span class="price">$0.010<small>USDC · x402</small></span>
+          <span class="price">100 sats<small>L402 / Lightning</small></span>
+        </div>
+        <div class="copy-row">
+          <button class="btn primary" onclick="openEndpoint(this)">Coba</button>
+          <button class="btn copy-btn">Salin tautan</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="filosofi">
+    <div class="section-eyebrow">Filosofi</div>
+    <h2 class="section-title">Kenapa halaman ini cuma HTML polos</h2>
+    <div class="about-grid">
+      <div class="about-block">
+        <h4>Tanpa front-end</h4>
+        <p>Tidak ada Cloudflare Pages, tidak ada React, tidak ada bundler. GitHub Pages sudah lebih dari cukup untuk etalase. Biaya operasional mendekati nol.</p>
+      </div>
+      <div class="about-block">
+        <h4>Tamu = transaksi</h4>
+        <p>Setiap request ke endpoint adalah micro-payment otomatis lewat protokol x402. Kalau kamu berhenti datang, kami berhenti dihitung. Tidak ada auto-billing, tidak ada trial tersembunyi.</p>
+      </div>
+      <div class="about-block">
+        <h4>Harga jujur</h4>
+        <p>Harga USDC sama dengan harga di x402scan. Tidak ada markup RobinDayo. Kalau kamu menemukan markup, itu bug — dan akan dikembalikan.</p>
+      </div>
+      <div class="about-block">
+        <h4>Sumber terbuka</h4>
+        <p>Seluruh logika worker tersedia publik. Repo ini adalah etalase; worker sumber ada di repositori terpisah. Silakan audit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="treasury" id="treasury">
+    <div class="section-eyebrow">Pembukuan</div>
+    <h2 class="section-title">Kas rumah (treasury)</h2>
+    <p class="section-lede">Setiap pembayaran yang masuk ke worker dicatat di kas Robinhood Chain di bawah. Saldo di bawah dibaca langsung dari RPC mainnet; kalau angkanya nol, ya memang nol.</p>
+
+    <div class="treasury-card">
+      <div class="treasury-row">
+        <div style="flex: 1; min-width: 280px;">
+          <div class="label">Treasury address · EVM · chain 4663</div>
+          <div class="address" id="treasury-addr">0x99Cc2cA01841ca704C834415b5909bE591f36d27</div>
+        </div>
+        <div style="text-align: right;">
+          <div class="label">Saldo · RHCHAIN</div>
+          <div class="balance" id="treasury-balance">memuat…</div>
+        </div>
+      </div>
+      <p class="treasury-note">Saldo diperbarui saat halaman dimuat, via JSON-RPC publik. Jika RPC sedang sibuk, kami jujur menampilkan "memuat…" — bukan angka palsu.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div>© 2026 RobinDayo · di-host di GitHub Pages · dijalankan oleh prpo_ai</div>
+    <div>
+      <a href="https://github.com/33ai-wq/robindayo" target="_blank" rel="noopener">repo</a> ·
+      <a href="https://github.com/33ai-wq" target="_blank" rel="noopener">operator</a> ·
+      <a href="https://x402scan.com" target="_blank" rel="noopener">x402scan</a>
+    </div>
+  </footer>
+
+  <script>
+    // Copy link buttons
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const card = btn.closest('.endpoint');
+        const url = card.dataset.url;
+        const method = card.dataset.method;
+        const text = method + ' ' + url;
+        try {
+          await navigator.clipboard.writeText(url);
+          btn.textContent = 'Tersalin ✓';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = 'Salin tautan';
+            btn.classList.remove('copied');
+          }, 1800);
+        } catch (e) {
+          btn.textContent = 'Gagal';
+          setTimeout(() => { btn.textContent = 'Salin tautan'; }, 1800);
+        }
+      });
+    });
+
+    function openEndpoint(btn) {
+      const card = btn.closest('.endpoint');
+      const url = card.dataset.url;
+      window.open(url, '_blank', 'noopener');
+    }
+
+    // Treasury balance — honest load via public JSON-RPC. Falls back gracefully.
+    (async () => {
+      const addr = '0x99Cc2cA01841ca704C834415b5909bE591f36d27'.toLowerCase();
+      const rpc = 'https://rpc.mainnet.chain.robinhood.com';
+      const el = document.getElementById('treasury-balance');
+      try {
+        const data = '0x' + addr.substring(2).padStart(64, '0');
+        const res = await fetch(rpc, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_getBalance', params: [addr, 'latest'] })
+        });
+        if (!res.ok) throw new Error('rpc http ' + res.status);
+        const json = await res.json();
+        if (json.error || !json.result) throw new Error(json.error?.message || 'no result');
+        const weiHex = json.result;
+        const wei = parseInt(weiHex, 16);
+        if (!Number.isFinite(wei)) throw new Error('parse fail');
+        const eth = wei / 1e18;
+        if (eth === 0) {
+          el.textContent = '0 RHO';
+        } else if (eth < 0.0001) {
+          el.textContent = wei.toLocaleString('en-US') + ' wei';
+        } else {
+          el.textContent = eth.toFixed(6) + ' RHO';
+        }
+      } catch (e) {
+        el.textContent = 'tidak tersedia';
+        el.style.fontSize = '14px';
+        el.style.color = '#999';
+      }
+    })();
+  </script>
+
+</body>
+</html>

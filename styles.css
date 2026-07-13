@@ -1,0 +1,346 @@
+/* RobinDayo — ruang tamu digital di Robinhood Chain
+   Palette: warm cream + Robinhood green, generous whitespace */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #1a1d1a;
+  --ink-soft: #4a5048;
+  --cream: #faf7f0;
+  --cream-deep: #f1ebe0;
+  --rh-green: #00b07c;
+  --rh-green-deep: #007f5b;
+  --rh-mist: #e8f5ef;
+  --rule: rgba(26, 29, 26, 0.12);
+  --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 18px rgba(0,0,0,0.05);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--rh-green-deep); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .18s; }
+a:hover { border-bottom-color: var(--rh-green-deep); }
+
+/* ---- Header ---- */
+.site-header {
+  padding: 56px 6vw 40px;
+  border-bottom: 1px solid var(--rule);
+  background:
+    radial-gradient(ellipse 800px 360px at 85% 20%, var(--rh-mist), transparent 70%),
+    var(--cream);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.brand-mark {
+  font-family: 'Georgia', serif;
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+}
+.brand-tld {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--rh-green-deep);
+  background: var(--rh-mist);
+  padding: 4px 8px;
+  border-radius: 3px;
+  transform: translateY(-2px);
+}
+
+.tagline {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin-bottom: 22px;
+  font-style: italic;
+}
+
+.chain-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  background: rgba(255,255,255,0.6);
+  padding: 7px 13px;
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+}
+.chain-pill .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--rh-green);
+  box-shadow: 0 0 0 4px rgba(0, 176, 124, 0.18);
+}
+
+/* ---- Section ---- */
+section { padding: 64px 6vw; border-bottom: 1px solid var(--rule); }
+section:last-of-type { border-bottom: none; }
+
+.section-eyebrow {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--rh-green-deep);
+  margin-bottom: 12px;
+}
+
+h2.section-title {
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.section-lede {
+  font-size: 16px;
+  color: var(--ink-soft);
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+
+/* ---- Welcome letter ---- */
+.welcome {
+  font-size: 17px;
+  color: var(--ink);
+  max-width: 720px;
+  margin-top: 10px;
+}
+.welcome p { margin-bottom: 16px; }
+.welcome .signoff {
+  margin-top: 28px;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* ---- Endpoint grid ---- */
+.endpoints {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+  margin-top: 12px;
+}
+
+.endpoint {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 24px;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  display: flex;
+  flex-direction: column;
+}
+.endpoint:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: rgba(0, 176, 124, 0.35);
+}
+
+.endpoint .verb {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  align-self: flex-start;
+}
+.endpoint .verb.get  { color: var(--rh-green-deep); background: var(--rh-mist); }
+.endpoint .verb.post { color: #7a4a00; background: #fff3df; }
+
+.endpoint h3 {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.endpoint .path {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+  word-break: break-all;
+}
+
+.endpoint p.desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.endpoint .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px dashed var(--rule);
+  margin-bottom: 14px;
+}
+.endpoint .price {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 600;
+}
+.endpoint .price small {
+  display: block;
+  font-weight: 400;
+  font-size: 10.5px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+  letter-spacing: 0.4px;
+}
+
+.endpoint .copy-row {
+  display: flex;
+  gap: 8px;
+}
+
+.endpoint .btn {
+  flex: 1;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 9px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  background: var(--cream);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all .15s;
+  border-bottom: 1px solid var(--rule); /* override link border */
+}
+.endpoint .btn:hover {
+  background: var(--rh-green);
+  color: #fff;
+  border-color: var(--rh-green);
+}
+.endpoint .btn.primary {
+  background: var(--rh-green);
+  color: #fff;
+  border-color: var(--rh-green);
+}
+.endpoint .btn.primary:hover {
+  background: var(--rh-green-deep);
+  border-color: var(--rh-green-deep);
+}
+.endpoint .btn.copied {
+  background: var(--rh-mist);
+  color: var(--rh-green-deep);
+  border-color: var(--rh-green-deep);
+}
+
+/* ---- About / philosophy ---- */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-top: 12px;
+}
+.about-block h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--rh-green-deep);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.about-block p {
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* ---- Treasury ---- */
+.treasury {
+  background:
+    linear-gradient(135deg, rgba(0, 176, 124, 0.04) 0%, transparent 60%),
+    var(--cream-deep);
+}
+.treasury-card {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 28px;
+  max-width: 720px;
+  margin-top: 8px;
+}
+.treasury-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.treasury-row .label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+.treasury-row .address {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13.5px;
+  color: var(--ink);
+  word-break: break-all;
+  flex: 1;
+  min-width: 280px;
+}
+.treasury-row .balance {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--rh-green-deep);
+  white-space: nowrap;
+}
+.treasury-note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  padding: 36px 6vw;
+  font-size: 13px;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-footer a { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
+
+@media (max-width: 640px) {
+  .site-header { padding: 36px 6vw 28px; }
+  .brand-mark { font-size: 28px; }
+  h2.section-title { font-size: 24px; }
+  section { padding: 44px 6vw; }
+}
