@@ -9,6 +9,7 @@
   <meta property="og:description" content="An open catalog of paid x402 endpoints on Robinhood Chain. Click, pay a few cents, get clean data.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="logo.svg">
+  <link rel="canonical" href="https://33ai-wq.github.io/robindayo/">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -21,6 +22,7 @@
     <p class="tagline">A digital <strong>living room</strong> on Robinhood Chain — built for the visitors who drop by, ask a question, and leave with something useful in hand.</p>
     <p class="subtitle">RobinDayo comes from the Javanese word <em>dayo</em> — a guest, a visitor — someone you welcome properly. Every endpoint on this page is treated as a guest: a small, fair fee, no friction, no tracking.</p>
     <span class="chain-pill"><span class="dot"></span>Robinhood Chain · mainnet · chain id 4663</span>
+    <p class="byline">Operated by <a href="https://paragraph.com/@mycera" target="_blank" rel="noopener">@mycera</a> · words at <em>paragraph.com/@mycera</em> · code at <em>github.com/33ai-wq</em></p>
   </header>
 
   <section id="welcome">
@@ -29,6 +31,49 @@
       <p>What you're looking at is a catalog of working endpoints, each hosted and billed on the x402 protocol (USDC on Base, settled automatically). There's no front-end cloud bill pushed onto you, no upsell modal, no SDK to install — just click, pay what the card shows, get your answer. Usually under a second.</p>
       <p>If these endpoints are useful, come back. If not, may your day be kind.</p>
       <p class="signoff">with respect,<br>prpo_ai · the operator</p>
+    </div>
+  </section>
+
+  <section id="field-guide">
+    <div class="section-eyebrow">Free · the visitor's field guide</div>
+    <h2 class="section-title">Take something <em>home</em> with you</h2>
+    <p class="section-lede">A short, honest PDF for visitors who'd like to read the protocol story offline. No email gate. No newsletter signup. Click, save, done — exactly the same principle as the endpoints below.</p>
+
+    <div class="guide-card">
+      <div class="guide-cover">
+        <div class="guide-cover-inner">
+          <div class="guide-eyebrow">FIELD&nbsp;GUIDE</div>
+          <div class="guide-title">The Visitor's Companion</div>
+          <div class="guide-sub">— RobinDayo</div>
+          <div class="guide-by">prpo_ai&nbsp;·&nbsp;B0x70</div>
+          <div class="guide-meta">8 pages &middot; brand-stamped&nbsp;PDF</div>
+        </div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-tag-row">
+          <span class="guide-tag green">free</span>
+          <span class="guide-tag orange">downloadable</span>
+          <span class="guide-tag ink">no email</span>
+        </div>
+        <h3>The Visitor's Companion</h3>
+        <p>An eight-page field guide to paying for x402 endpoints, Lightning sats, and reading a digital living room on Robinhood Chain. Read it once, keep it open, hand it to the next visitor.</p>
+        <ul class="guide-chapters">
+          <li>01 — What a visitor actually pays for</li>
+          <li>02 — Two rails, one question</li>
+          <li>03 — Reading a 402 envelope</li>
+          <li>04 — Lightning lanes (priced in sats)</li>
+          <li>05 — Honourable pricing &mdash; and how to spot the rest</li>
+          <li>06 — What the operator owes a guest</li>
+          <li>07 — A short glossary for first-time visitors</li>
+          <li>08 — Where this room came from</li>
+        </ul>
+        <div class="guide-actions">
+          <a class="btn btn-primary btn-pdf" href="visitors-companion.pdf" download>Download the PDF</a>
+          <a class="btn btn-ghost" href="visitors-companion.pdf" target="_blank" rel="noopener">Open in browser</a>
+        </div>
+        <p class="guide-note">Updates land <em>first</em> on this page; the file is republished every time the guide changes. SHA-256 is shown in the README so you can verify the download.</p>
+        <p class="guide-note">Want the printed, signed edition? A paid hard-copy is queued on Gumroad <mdash; the link will appear here the moment it's live; meanwhile the PDF stays free.</p>
+      </div>
     </div>
   </section>
 
@@ -224,27 +269,31 @@
     }
 
     (async () => {
-      const addr = '0x99Cc2cA01841ca704C834415b5909bE591f36d27'.toLowerCase();
-      const rpc = 'https://rpc.mainnet.chain.robinhood.com';
+      const addr = '0x99Cc2cA01841ca704C834415b5909bE591f36d27';
       const el = document.getElementById('treasury-balance');
+      // Robinhood Chain public RPC doesn't accept anonymous calls (HTTP 403 from
+      // the operator-side firewall), so we read the canonical balance through
+      // the Blockscout instance the chain team publishes. The browser issues a
+      // simple GET, Blockscout serves the result on behalf of an authenticated
+      // RPC partner — same number, no fake rendering.
+      const url = 'https://robinhoodchain.blockscout.com/api?module=account&action=balance&address=' + addr;
+      const ctl = new AbortController();
+      const t = setTimeout(() => ctl.abort(), 9000);
       try {
-        const res = await fetch(rpc, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_getBalance', params: [addr, 'latest'] })
-        });
-        if (!res.ok) throw new Error('rpc http ' + res.status);
+        const res = await fetch(url, { signal: ctl.signal, headers: { 'Accept': 'application/json' } });
+        clearTimeout(t);
+        if (!res.ok) throw new Error('explorer http ' + res.status);
         const json = await res.json();
-        if (json.error || !json.result) throw new Error(json.error?.message || 'no result');
-        const wei = parseInt(json.result, 16);
-        if (!Number.isFinite(wei)) throw new Error('parse fail');
-        const rho = wei / 1e18;
-        if (rho === 0) {
+        if (json.status !== '1' || !json.result) throw new Error(json.message || 'no result');
+        const wei = BigInt(json.result);
+        if (wei === 0n) {
           el.textContent = '0 RHO';
-        } else if (rho < 0.0001) {
-          el.textContent = wei.toLocaleString('en-US') + ' wei';
         } else {
-          el.textContent = rho.toFixed(6) + ' RHO';
+          const s = wei.toString();
+          const decimals = 18n;
+          const whole = (wei / (10n ** decimals)).toString();
+          const frac  = (wei % (10n ** decimals)).toString().padStart(18, '0').replace(/0+$/, '');
+          el.textContent = frac ? (whole + '.' + frac + ' RHO') : (whole + ' RHO');
         }
       } catch (e) {
         el.textContent = 'unavailable';

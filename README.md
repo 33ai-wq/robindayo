@@ -2,13 +2,17 @@
 
 > Visitors welcome.
 
-An open catalog of paid x402 endpoints operated by `prpo_ai` for B0x70, hosted as a plain
-static site on GitHub Pages. No front-end cloud, no tracking, no auth wall — just links,
-prices, and a guestbook for the visitors who drop by.
+An open digital living room on Robinhood Chain. Catalog of paid x402 endpoints, a free field-guide PDF for offline reading, and a live house treasury — every number honest, every action opt-in.
 
 ## URL
 
 Live at: `https://33ai-wq.github.io/robindayo/`
+
+## What's here (v3)
+
+- **`/`** — the catalog itself: Robinhood Chain treasury (live via Blockscout), four paid x402 endpoints, two Lightning rails, the "how a visit works" 4-step strip, six-fragment philosophy grid.
+- **`visitors-companion.pdf`** — an 8-page free field guide. Click the **Download the PDF** button on the page; no email, no signup. SHA-256 of the canonical copy is pinned below; we re-publish this PDF whenever the guide changes.
+- **@mycera cross-link** — the operator writes longer-form essays at `paragraph.com/@mycera`. The page canonical-byline makes that cross-link visible to readers who came for the API endpoints and want to read the operator's writing too.
 
 ## Endpoints available
 
@@ -19,29 +23,52 @@ Live at: `https://33ai-wq.github.io/robindayo/`
 | [`/v1/dinalibrium`](https://x402-cf-worker.mulberry-boar.workers.dev/v1/dinalibrium) | POST | $0.005 | 50 |
 | [`/v1/wallet-profile`](https://x402-cf-worker.mulberry-boar.workers.dev/v1/wallet-profile) | GET | $0.010 | 100 |
 
+## Visitor's Companion (PDF)
+
+```
+file:    visitors-companion.pdf
+sha256:  d6ce22db52c54250bd7ec1c092833b646206a2492c119f8f47b45ab90f0cb0b1
+size:    19,095 bytes
+pages:   8
+format:  A4 (595.28 × 841.89 pts)
+author:  prpo_ai · B0x70
+created: 2026-07-14
+```
+
+Re-verify locally:
+
+```bash
+shasum -a 256 visitors-companion.pdf
+# → expect: d6ce22db52c54250bd7ec1c092833b646206a2492c119f8f47b45ab90f0cb0b1
+```
+
+PDF chapters: what a visitor pays for · two rails, one question · reading a 402 envelope · Lightning lanes · honourable pricing · what the operator owes a guest · short glossary · where this room came from.
+
+> A paid hard-copy edition is planned on Gumroad. The link will appear on the page the moment it's live; until then the field guide stays free.
+
 ## Treasury
 
 ```
-0x99Cc2cA01841ca704C834415b5909bE591f36d27
-chain id: 4663 · Robinhood Chain mainnet
+address:    0x99Cc2cA01841ca704C834415b5909bE591f36d27
+chain:      Robinhood Chain · mainnet · chain id 4663
+explorer:   https://robinhoodchain.blockscout.com/address/0x99Cc2cA01841ca704C834415b5909bE591f36d27
 ```
 
-Balance is read live on every page load via the public JSON-RPC; if RPC is unreachable the
-card honestly says "unavailable" rather than fabricating a number.
+The balance on the page is read live on every load via the canonical Blockscout endpoint. Robinhood's own public RPC (`rpc.mainnet.chain.robinhood.com`) refuses anonymous browser calls with HTTP 403; the explorer endpoint proxies the same JSON-RPC query on behalf of authenticated RPC partners, so the number the page shows is the same number an authenticated operator would see.
 
-## Files
+If the explorer is unreachable from the visitor's network, the card falls back to "unavailable" rather than fabricate a balance.
 
-- `index.html` — the catalog page
-- `styles.css` — cream + Robinhood green + grab-orange palette, serif body
-- `logo.svg` — the wordmark used at the top of the page
-- `favicon.svg` — the favicon / social-card mark
+## Files in this repo
 
-## Worker sources
+```
+index.html        — the page body + payment-rail script + treasury block
+styles.css        — palette + cards + the new guide-card block
+logo.svg          — wordmark
+favicon.svg       — monogram favicon
+visitors-companion.pdf  — the free field guide
+downloads/        — staging area; canonical copy lives at repo root
+```
 
-- Catalogue source: https://github.com/33ai-wq/robindayo
-- Worker b0x402 (live endpoint surface): https://github.com/33ai-wq/b0x402
-- Worker b0xSniperLITE: https://github.com/33ai-wq/b0x-sniper-lite
+## Hosting
 
-## License
-
-MIT
+GitHub Pages from `main` / root. Standard JSDelivr+++ pages build, no custom domain, no analytics, no consent banner — by design.
