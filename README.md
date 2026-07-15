@@ -44,7 +44,7 @@ shasum -a 256 visitors-companion.pdf
 
 PDF chapters: what a visitor pays for · two rails, one question · reading a 402 envelope · Lightning lanes · honourable pricing · what the operator owes a guest · short glossary · where this room came from.
 
-> A paid hard-copy edition is planned on Gumroad. The link will appear on the page the moment it's live; until then the field guide stays free.
+> A paid hard-copy edition is live on Gumroad — [prpoai.gumroad.com/l/robindayo](https://prpoai.gumroad.com/l/robindayo) — $9.99, "Visitor's Companion pocketbook ed.". The free PDF stays free; the pocketbook exists for readers who want a printed, signed copy.
 
 ## Treasury
 
